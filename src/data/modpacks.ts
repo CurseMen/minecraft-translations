@@ -1,41 +1,5 @@
 import { Modpack } from '../types';
 
-/*
- * =====================================================================================
- * КАК РЕДАКТИРОВАТЬ ЭТОТ ФАЙЛ
- * =====================================================================================
- *
- * Этот файл — ваша "база данных" для переводов. Чтобы добавить новый перевод,
- * скопируйте существующий блок `{...}` и вставьте его в массив `modpacks`.
- *
- * Убедитесь, что каждый блок отделен запятой `,`, кроме последнего.
- *
- * Поля для заполнения:
- *
- * id: Уникальный номер для каждого перевода. Просто увеличивайте его на 1 для каждого нового.
- * title: Название модпака.
- * description: Краткое описание для карточки на главной странице.
- * detailedDescription: Подробное описание для страницы перевода. Можно использовать
- *                      HTML-теги, например, `<strong>` для выделения и `<br/>` для
- *                      переноса строки.
- * imageUrl: Ссылка на изображение для карточки.
- * downloadUrl: Прямая ссылка на скачивание файла перевода.
- * repoUrl (необязательно): Ссылка на репозиторий GitHub в формате "владелец/репозиторий".
- *                         Включает счётчик скачиваний. Репозиторий должен использовать "Releases".
- * version: Версия модпака, для которой предназначен перевод.
- * minecraftVersion: Версия игры Minecraft, для которой предназначен перевод (например, "1.20.1").
- * lastUpdated (необязательно): Дата последнего обновления в формате "ГГГГ-ММ-ДД".
- *                              Если дата свежая (до 7 дней), на карточке
- *                              появится значок "Обновлено!".
- * localizedMods (необязательно): Массив строк со списком локализованных модов.
- *                                Если поле есть, на странице перевода появится
- *                                сворачивающийся список.
- * curseforgeUrl (необязательно): Ссылка на страницу модпака на CurseForge.
- * modrinthUrl (необязательно): Ссылка на страницу модпака на Modrinth.
- *
- * =====================================================================================
- */
-
 const today = new Date();
 const fiveDaysAgo = new Date(today);
 fiveDaysAgo.setDate(today.getDate() - 5);
@@ -48,85 +12,146 @@ const formatDate = (date: Date) => date.toISOString().split('T')[0];
 export const modpacks: Modpack[] = [
   {
     id: 1,
-    title: "All The Mods 9",
-    description: "Полная локализация для одной из крупнейших сборок. Сотни модов на русском языке для комфортного изучения.",
-    detailedDescription: "Перевод для <strong>All The Mods 9</strong> включает в себя квесты, названия предметов и интерфейсы большинства модов. Погрузитесь в безграничный мир технологий, магии и исследований, не отвлекаясь на словарь.",
-    imageUrl: "https://picsum.photos/seed/atm9/400/200",
+    title: "All The Mods 9 (ATM9)",
+    description: "Полная локализация квестов для одной из крупнейших сборок.",
+    detailedDescription: "<strong>ATM9</strong> — это крупный модпак, объединяющий десятки самых популярных техно и магических модов. Подходит как для изучения новых модов, так и для продвинутой автоматизации.",
+    imageUrl: "assets/ATM9.jpg",
     downloadUrl: "#",
-    version: "0.2.58+",
+    version: "1.0.8+",
+    lastUpdated: "2025-06-11",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9",
     minecraftVersion: "1.20.1",
-    lastUpdated: formatDate(today),
   },
   {
     id: 2,
-    title: "All The Mods 10",
-    description: "Новейшая версия легендарной серии! Перевод квестов и гайдов, чтобы вы были в курсе всех нововведений.",
-    detailedDescription: "Локализация для <strong>All The Mods 10</strong> находится в активной разработке. Уже переведены стартовые квесты и основные моды. Откройте для себя будущее моддинга на понятном языке!",
-    imageUrl: "https://picsum.photos/seed/atm10/400/200",
+    title: "All The Mods 10 (ATM10)",
+    description: "Новейшая версия легендарной серии! Перевод квестов, чтобы вы были в курсе всех нововведений.",
+    detailedDescription: "<strong>ATM10</strong> — новая версия популярной серии сборок, включающая самые свежие моды на технологии, магию, автоматизацию и исследование мира. Отличается стабильной работой, продуманным балансом и поддержкой как одиночной, так и совместной игры.",
+    imageUrl: "assets/ATM10.jpg",
     downloadUrl: "#",
-    version: "1.0.3+",
-    minecraftVersion: "1.21",
-    lastUpdated: formatDate(fiveDaysAgo),
+    version: "4.12+",
+    lastUpdated: "2025-10-18",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-10",
+    minecraftVersion: "1.21.1",
   },
   {
     id: 3,
     title: "FTB OceanBlock 2",
     description: "Выживайте в мире, полностью покрытом водой. Все квесты переведены для вашего удобства.",
-    detailedDescription: "Продолжение популярной сборки <strong>FTB OceanBlock</strong>. Мы подготовили полный перевод квестовой книги, чтобы вы могли с лёгкостью пройти все испытания и построить свою подводную базу.",
-    imageUrl: "https://picsum.photos/seed/oceanblock2/400/200",
+    detailedDescription: "<strong>FTB OceanBlock 2</strong> — техно-магическая сборка, действие которой разворачивается в океане. Игрок начинает на платформе среди бескрайних вод и постепенно развивает технологии, автоматизацию и магию, выполняя квесты из специальной книги.",
+    imageUrl: "assets/oceanblock2.png",
     downloadUrl: "#",
-    version: "1.2.0",
-    minecraftVersion: "1.20.1",
-    lastUpdated: formatDate(aMonthAgo),
+    version: "1.12.2+",
+    lastUpdated: "2025-06-24",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/ftb-oceanblock-2",
+    minecraftVersion: "1.21.1",
   },
   {
     id: 4,
     title: "SteamPunk [LPS]",
-    description: "Погрузитесь в мир паровых машин и викторианской эстетики с полным переводом квестов и механизмов.",
-    detailedDescription: "Локализация для сборки <strong>SteamPunk [LPS]</strong> поможет вам разобраться в сложных механизмах и захватывающем сюжете. Переведены все диалоги, квесты и описания ключевых предметов.",
-    imageUrl: "https://picsum.photos/seed/steampunk/400/200",
+    description: "Погрузитесь в мир паровых машин и викторианской эстетики с полным переводом квестов.",
+    detailedDescription: "<strong>SteamPunk</strong> — атмосферная сборка в стиле стимпанка, сочетающая технологии на паровой тяге, ретрофутуризм и приключения. Игроков ждёт медленное, вдумчивое развитие через механизмы, паровые машины и необычную архитектуру в духе викторианской эпохи.",
+    imageUrl: "assets/steampunk.jpg",
     downloadUrl: "#",
-    version: "66.0",
-    minecraftVersion: "1.18.2",
+    version: "v16+",
+    lastUpdated: "2025-07-06",
+    minecraftVersion: "1.20.1",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/steam-punk",
+    modrinthUrl: "https://modrinth.com/modpack/steam-punk",
   },
   {
     id: 5,
     title: "FTB Skies 2",
     description: "Новый взгляд на скайблок от команды FTB. Летайте между островами, выполняя переведенные задания.",
-    detailedDescription: "Полный перевод квестов для <strong>FTB Skies 2</strong>. Исследуйте парящие в небе острова, изучайте магию и технологии, следуя указаниям на родном языке.",
-    imageUrl: "https://picsum.photos/seed/skies2/400/200",
+    detailedDescription: "<strong>FTB Skies 2</strong> — продолжение популярной «небесной» сборки, где вы начинаете на парящих островах в бескрайнем небе. Сочетает технологии, магию, исследования и квестовую систему, которая направляет развитие и открывает новые возможности. Отличается стабильной работой, продуманным балансом и поддержкой как одиночной, так и совместной игры.",
+    imageUrl: "assets/ftbskies2.png",
     downloadUrl: "#",
-    version: "1.2.1",
-    minecraftVersion: "1.20.1",
+    version: "1.6.1+",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/ftb-skies-2",
+    lastUpdated: "2025-08-10",
+    minecraftVersion: "1.21.1",
+    localizedMods: [
+      "Enchanted + книжка-путеводитель",
+      "Fargo's Talismans",
+      "Framed Blocks",
+      "Functional Storage",
+      "Gadgets Against Grind",
+      "Genetics: Resequenced",
+      "GeOre",
+      "Iron Furnaces",
+      "Iron's Gems 'n Jewelry [Названия самоцветов]",
+      "Just Dire Things [Только названия некоторых предметов]",
+      "Just Dyna Things",
+      "Magic Coins",
+      "Modular Force Field Systems (MFFS)",
+      "Pylons",
+      "Roots",
+      "Tempad"
+    ],
   },
   {
     id: 6,
     title: "MC Eternal 2",
-    description: "Продолжение хардкорной приключенческой сборки. Перевод квестов, достижений и описаний.",
-    detailedDescription: "<strong>MC Eternal 2</strong> бросает настоящий вызов. Наш перевод поможет вам сориентироваться в огромном мире, полном опасностей и приключений. Локализованы все квестовые линии и важные гайды.",
-    imageUrl: "https://picsum.photos/seed/eternal2/400/200",
+    description: "Продолжение хардкорной приключенческой сборки. Перевод квестов.",
+    detailedDescription: "<strong>MC Eternal 2</strong> — масштабная приключенческая сборка, сочетающая технологии, магию, исследования и квесты. Игроков ждут сотни модов, проработанное дерево заданий, интересные боссы и возможность развиваться в любом направлении — от индустриальной автоматизации до магических ритуалов. Отличный выбор как для одиночной игры, так и для кооператива.",
+    imageUrl: "assets/mc_eternal2.jpg",
     downloadUrl: "#",
-    version: "1.0",
-    minecraftVersion: "1.19.2",
+    version: "1.1.1.0+",
+    lastUpdated: "2025-09-14",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/mc-eternal-2",
+    minecraftVersion: "1.20.1",
   },
   {
     id: 7,
     title: "GregTech Community Pack Modern",
-    description: "Для истинных ценителей сложных производственных цепочек. Полный перевод квестов и гайдов GregTech.",
-    detailedDescription: "Этот перевод предназначен для тех, кто не боится трудностей. Локализация <strong>GregTech Community Pack Modern</strong> охватывает тысячи предметов, механизмов и всю квестовую книгу, чтобы сделать ваш путь к звездам немного проще.",
-    imageUrl: "https://picsum.photos/seed/gregtech/400/200",
+    description: "Для истинных ценителей сложных производственных цепочек. Полный перевод квестов по GregTech.",
+    detailedDescription: "<strong>GregTech Community Pack Modern (GTCPM)</strong> — это хардкорная техно-сборка, основанная на моде GregTech, где всё завязано на сложных рецептах, продвинутых механизмах и постепенном развитии технологий. Здесь придётся продумывать каждый шаг, автоматизировать производство и искать эффективные решения, чтобы продвигаться дальше.",
+    imageUrl: "assets/gregtechce-modern.jpg",
     downloadUrl: "#",
-    version: "1.10.3",
+    version: "1.14.0+",
+    lastUpdated: "2025-09-07",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/gregtech-community-pack-modern",
     minecraftVersion: "1.20.1",
   },
   {
     id: 8,
-    title: "Cisco's Fantasy Medieval RPG",
-    description: "Масштабная RPG-сборка с драконами, магией и подземельями. Перевод квестов и диалогов.",
-    detailedDescription: "Погрузитесь в фэнтезийный мир <strong>Dragonfyre</strong>! Наш перевод поможет вам понять сюжет, квесты и диалоги с NPC, делая ваше приключение по-настояшему захватывающим.",
-    imageUrl: "https://picsum.photos/seed/dragonfyre/400/200",
+    title: "Cisco's Fantasy Medieval RPG [Dragonfyre]",
+    description: "Масштабная RPG-сборка с драконами, магией и подземельями. Перевод квестов и модов.",
+    detailedDescription: "<strong>Cisco's Fantasy Medieval RPG [Dragonfyre]</strong> —это масштабная RPG-сборка в средневековом фэнтези-сеттинге с продвинутой боевой системой, классами, магией, сотнями квестов и переработанными мирами для настоящих любителей приключений.",
+    imageUrl: "assets/cisco_dragonfyre.jpg",
     downloadUrl: "#",
-    version: "v25",
-    minecraftVersion: "1.19.2",
+    version: "V2D Beta+",
+    lastUpdated: "2025-10-10",
+    minecraftVersion: "1.20.1",
+    localizedMods: [
+      "Aether: Lost Content Addon",
+      "Bosses'Rise",
+      "Celestisynth: Wishes and Hells",
+      "Cisco's Content [Названия предметов/мобов + достижения]",
+      "Clayworks",
+      "Domum Ornamentum",
+      "Dreadsteel",
+      "End's Phantasm",
+      "Enigmatic Addons",
+      "Enlightend",
+      "Eyes of Ice and Fire",
+      "Farmer's Respite",
+      "Galosphere",
+      "Icarus",
+      "Iron Furnaces",
+      "It Takes a Pillage",
+      "L2 Complements",
+      "Legendary Monsters",
+      "Library Ferret",
+      "Nether's Delight",
+      "Ocean's Delight",
+      "Sons Of Sins",
+      "Structurize",
+      "The Outer End",
+      "Too Many Bows",
+      "Twigs",
+      "Woodworks"
+    ],
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/ciscos-fantasy-medieval-rpg-dragonfyre",
   }
 ];
