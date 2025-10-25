@@ -12,10 +12,10 @@ interface DownloadCounts {
 }
 
 // Paths to images in the assets folder
-const CREEPER_IMG = 'assets/creeper.png';
+const CREEPER_IMG = 'assets/Creeper.png';
 const ZOMBIE_IMG = 'assets/zombie.png';
 const SKELETON_IMG = 'assets/skeleton.png';
-const ENDERMAN_IMG = 'assets/enderman.png';
+const ENDERMAN_IMG = 'assets/Enderman.png';
 const GOLEM_IMG = 'assets/golem.png';
 
 type SortType = 'newest' | 'name-asc' | 'name-desc';
