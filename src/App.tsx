@@ -12,10 +12,11 @@ interface DownloadCounts {
 }
 
 // Paths to images in the assets folder
-const CREEPER_IMG = '/assets/creeper.png';
-const ZOMBIE_IMG = '/assets/zombie.png';
-const SKELETON_IMG = '/assets/skeleton.png';
-const ENDERMAN_IMG = '/assets/enderman.png';
+const CREEPER_IMG = 'assets/creeper.png';
+const ZOMBIE_IMG = 'assets/zombie.png';
+const SKELETON_IMG = 'assets/skeleton.png';
+const ENDERMAN_IMG = 'assets/enderman.png';
+const GOLEM_IMG = 'assets/golem.png';
 
 type SortType = 'newest' | 'name-asc' | 'name-desc';
 
@@ -172,8 +173,7 @@ const App: React.FC = () => {
     <div className="flex min-h-screen justify-center">
       {/* Left decorative sidebar */}
       <aside className="w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
-          <img src={CREEPER_IMG} alt="Creeper" className="w-24 h-auto" />
-          <img src={ZOMBIE_IMG} alt="Zombie" className="w-24 h-auto" />
+          <img src={CREEPER_IMG} alt="Creeper" className="w-auto h-auto" />
       </aside>
 
       {/* Main content area */}
@@ -250,8 +250,8 @@ const App: React.FC = () => {
 
        {/* Right decorative sidebar */}
       <aside className="w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
-          <img src={SKELETON_IMG} alt="Skeleton" className="w-24 h-auto" />
-          <img src={ENDERMAN_IMG} alt="Enderman" className="w-24 h-auto" />
+          <img src={GOLEM_IMG} alt="Golem" className="w-auto h-auto" />
+          <img src={ENDERMAN_IMG} alt="Enderman" className="w-auto h-auto" />
       </aside>
     </div>
   );
