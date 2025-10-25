@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minecraft Modpack Translations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.png">
+    <style>
+      body {
+        font-family: 'Press-Start-2P', cursive;
+        /* Atmospheric Minecraft background from the assets folder */
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/background.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        background-color: #1a1a1a;
+        color: #FFFFFF;
+      }
+      .main-content-bg {
+        /* New background for the central content area */
+        background-image: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url('/assets/stone-background.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+      }
+      .minecraft-btn {
+        background-color: #5ca65c; /* Minecraft green */
+        border-style: solid;
+        border-width: 4px;
+        border-color: #84d284 #3e733e #3e733e #84d284;
+        box-shadow: 4px 4px 0px #00000060;
+        color: #ffffff;
+        text-shadow: 2px 2px 0px #00000080;
+        transition: all 0.1s ease-in-out;
+        cursor: pointer;
+        image-rendering: pixelated;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .minecraft-btn:hover {
+        background-color: #6cc16c;
+        transform: scale(1.02);
+      }
+      .minecraft-btn:active, .active-sort {
+        border-color: #3e733e #84d284 #84d284 #3e733e;
+        box-shadow: none;
+        transform: translate(2px, 2px) scale(1.02);
+      }
+      .active-sort {
+        background-color: #4a8a4a; /* Darker green for active state */
+      }
+      .minecraft-card {
+        background-color: #ab8663; /* Oak plank color */
+        /* Card texture from the assets folder */
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/assets/card-texture.png');
+        border-style: solid;
+        border-width: 4px;
+        border-color: #d4b18c #7d5e42 #7d5e42 #d4b18c;
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        box-shadow: 8px 8px 0px #00000030;
+        cursor: pointer;
+        image-rendering: pixelated;
+      }
+      .minecraft-card:hover {
+         transform: translate(-4px, -4px);
+         box-shadow: 12px 12px 0px #00000040;
+      }
+      .minecraft-card-inner, .minecraft-detail-view, .minecraft-modal-content {
+        background-color: #c6c6c6; /* Light gray inventory color */
+        border: 4px solid #373737;
+        box-shadow: inset 0px 0px 12px #00000040;
+        color: #3a3a3a;
+      }
+      .text-shadow-dark {
+        text-shadow: 4px 4px 0 #3a3a3a, 6px 6px 0px #00000080;
+      }
+      .minecraft-search {
+        background-color: #373737;
+        border-style: solid;
+        border-width: 4px;
+        border-color: #2a2a2a #8e8e8e #8e8e8e #2a2a2a;
+        color: white;
+        outline: none;
+      }
+      .minecraft-search::placeholder {
+        color: #a0a0a0;
+      }
+      .download-badge {
+        background-color: #373737;
+        border: 2px solid #555555;
+        box-shadow: 2px 2px 0px #00000060;
+      }
+      .update-badge {
+        background-color: #4CAF50; /* Emerald green */
+        border: 2px solid #388E3C;
+        box-shadow: 2px 2px 0px #00000060;
+        text-shadow: 1px 1px 0 #00000080;
+      }
+      .minecraft-collapsible-container {
+        border-top: 4px solid #555;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+      }
+      .minecraft-collapsible-header {
+        background-color: #8b8b8b;
+        border: 4px solid #373737;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        text-align: left;
+        color: #2a2a2a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.2s;
+        text-shadow: 2px 2px 0 #ffffff60;
+      }
+      .minecraft-collapsible-header:hover {
+        background-color: #9c9c9c;
+      }
+      .minecraft-collapsible-header .arrow {
+        transition: transform 0.2s ease-in-out;
+        display: inline-block;
+      }
+      .minecraft-collapsible-header .arrow.open {
+        transform: rotate(180deg);
+      }
+      .minecraft-collapsible-content {
+        padding: 1rem;
+        background-color: #bababa;
+        border: 4px solid #373737;
+        border-top: none;
+      }
+      .minecraft-collapsible-content li {
+        padding: 0.25rem 0;
+        color: #4a4a4a;
+      }
+      .news-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .news-modal-content {
+        position: relative;
+        max-width: 90%;
+        width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+      .close-button {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 36px;
+      }
+      .minecraft-btn-source {
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+      }
+      .minecraft-btn-source svg {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+      }
+      .minecraft-btn-curseforge {
+        background-color: #f16436;
+        border-color: #f5845d #c4502a #c4502a #f5845d;
+      }
+      .minecraft-btn-curseforge:hover {
+        background-color: #f3774f;
+      }
+      .minecraft-btn-curseforge:active {
+        border-color: #c4502a #f5845d #f5845d #c4502a;
+      }
+      .minecraft-btn-modrinth {
+        background-color: #30B27B;
+        border-color: #57c79a #258a60 #258a60 #57c79a;
+      }
+      .minecraft-btn-modrinth:hover {
+        background-color: #46c28b;
+      }
+      .minecraft-btn-modrinth:active {
+        border-color: #258a60 #57c79a #57c79a #258a60;
+      }
+      .minecraft-btn-support {
+        background-color: #FFD700; /* Gold */
+        border-color: #FFEE7B #E5C100 #E5C100 #FFEE7B;
+        color: #3a3a3a; /* Dark text for contrast */
+        text-shadow: 2px 2px 0px #ffffff80; /* Light shadow */
+      }
+      .minecraft-btn-support:hover {
+        background-color: #FFDE33;
+      }
+      .minecraft-btn-support:active {
+        border-color: #E5C100 #FFEE7B #FFEE7B #E5C100;
+      }
+      .minecraft-btn-telegram {
+        background-color: #24A1DE; /* Telegram Blue */
+        border-color: #4FB9E6 #1C7EAD #1C7EAD #4FB9E6;
+      }
+      .minecraft-btn-telegram:hover {
+        background-color: #38aee2;
+      }
+      .minecraft-btn-telegram:active {
+        border-color: #1C7EAD #4FB9E6 #4FB9E6 #1C7EAD;
+      }
+      .minecraft-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 8px;
+        z-index: 50;
+        width: 280px;
+        background-color: #ab8663; /* Oak plank color */
+        border-style: solid;
+        border-width: 4px;
+        border-color: #d4b18c #7d5e42 #7d5e42 #d4b18c;
+        box-shadow: 8px 8px 0px #00000030;
+      }
+      .minecraft-dropdown-inner {
+        background-color: #c6c6c6; /* Light gray inventory color */
+        border: 4px solid #373737;
+        padding: 0.5rem;
+      }
+      .minecraft-dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #3a3a3a;
+        font-size: 0.875rem; /* 14px */
+        transition: background-color 0.1s, color 0.1s;
+      }
+      .minecraft-dropdown-item:hover, .minecraft-dropdown-item:focus {
+        background-color: #8b8b8b;
+        color: white;
+        text-shadow: 1px 1px 0 #00000080;
+        outline: none;
+      }
+      .minecraft-dropdown-item.active {
+        background-color: #5ca65c;
+        color: white;
+        text-shadow: 2px 2px 0px #3e733e;
+      }
+      .minecraft-dropdown-divider {
+        height: 4px;
+        background-color: #373737;
+        margin: 0.5rem 0;
+        border-top: 2px solid #8e8e8e;
+        border-bottom: 2px solid #8e8e8e;
+      }
+      .minecraft-dropdown-header {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem; /* 12px */
+        color: #5a5a5a;
+        text-transform: uppercase;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "vite": "https://aistudiocdn.com/vite@^7.1.12",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
