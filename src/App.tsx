@@ -188,8 +188,8 @@ const App: React.FC = () => {
   const getSortButtonText = () => {
     let sortText;
     switch (sortType) {
-      case 'name-asc': sortText = 'А-Я'; break;
-      case 'name-desc': sortText = 'Я-А'; break;
+      case 'name-asc': sortText = 'A-Z'; break;
+      case 'name-desc': sortText = 'Z-A'; break;
       default: sortText = 'Новые';
     }
     const versionText = versionFilter === 'all' ? 'Все' : versionFilter;
