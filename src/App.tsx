@@ -241,8 +241,8 @@ const App: React.FC = () => {
                       <div className="minecraft-dropdown-inner">
                         <div className="minecraft-dropdown-header">Сортировать по</div>
                         <button onClick={() => {setSortType('newest'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'newest' ? 'active' : ''}`}>Сначала новые</button>
-                        <button onClick={() => {setSortType('name-asc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-asc' ? 'active' : ''}`}>Название (А-Я)</button>
-                        <button onClick={() => {setSortType('name-desc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-desc' ? 'active' : ''}`}>Название (Я-А)</button>
+                        <button onClick={() => {setSortType('name-asc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-asc' ? 'active' : ''}`}>Название (A-Z)</button>
+                        <button onClick={() => {setSortType('name-desc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-desc' ? 'active' : ''}`}>Название (Z-A)</button>
                         <div className="minecraft-dropdown-divider"></div>
                         <div className="minecraft-dropdown-header">Фильтр по версии MC</div>
                         <button onClick={() => {setVersionFilter('all'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${versionFilter === 'all' ? 'active' : ''}`}>Все версии</button>
