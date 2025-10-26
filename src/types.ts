@@ -11,6 +11,7 @@ export interface Modpack {
   version: string;
   minecraftVersion: string;
   lastUpdated?: string; // Date in "YYYY-MM-DD" format
+  isOutdated?: boolean;
   localizedMods?: string[];
   curseforgeUrl?: string;
   modrinthUrl?: string;
