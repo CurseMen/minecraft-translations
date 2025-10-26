@@ -11,7 +11,7 @@
     <link rel="icon" href="/assets/favicon.png">
     <style>
       body {
-        font-family: 'Press-Start-2P', sans-serif;
+        font-family: sans-serif; /* Default font for mobile to avoid rendering issues */
         /* Atmospheric Minecraft background from the assets folder */
         background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/background.jpg');
         background-size: cover;
@@ -19,6 +19,12 @@
         background-attachment: fixed;
         background-color: #1a1a1a;
         color: #FFFFFF;
+      }
+      /* Apply pixel font on desktops where it renders correctly */
+      @media (min-width: 768px) {
+        body {
+          font-family: 'Press-Start-2P', sans-serif;
+        }
       }
       .main-content-bg {
         /* New background for the central content area */
