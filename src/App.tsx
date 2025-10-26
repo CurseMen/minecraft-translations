@@ -59,52 +59,76 @@ const App: React.FC = () => {
   // Effect to fetch download counts
   useEffect(() => {
     const fetchAllCounts = async () => {
-      const counts: DownloadCounts = {};
       const cacheKey = 'downloadCountsCache';
       const cacheDuration = 4 * 60 * 60 * 1000; // 4 hours
 
-      let cachedData;
       try {
         const cachedItem = localStorage.getItem(cacheKey);
         if (cachedItem) {
-          cachedData = JSON.parse(cachedItem);
+          const cachedData = JSON.parse(cachedItem);
+          const now = new Date().getTime();
+          if (now - cachedData.timestamp < cacheDuration) {
+            setDownloadCounts(cachedData.counts);
+            return;
+          }
         }
       } catch (e) {
         console.error("Failed to parse cache", e);
       }
-
-      const now = new Date().getTime();
-
-      if (cachedData && (now - cachedData.timestamp < cacheDuration)) {
-        setDownloadCounts(cachedData.counts);
+      
+      const packsWithRepo = modpacks.filter(p => p.repoUrl && p.id);
+      if (packsWithRepo.length === 0) {
         return;
       }
 
-      const packsWithRepo = modpacks.filter(p => p.repoUrl);
-      packsWithRepo.forEach(p => counts[p.id] = 'loading');
-      setDownloadCounts(c => ({...c, ...counts}));
+      // Set initial loading state for all of them
+      const loadingCounts: DownloadCounts = {};
+      packsWithRepo.forEach(p => {
+        loadingCounts[p.id] = 'loading';
+      });
+      setDownloadCounts(prevCounts => ({...prevCounts, ...loadingCounts}));
 
-      for (const modpack of packsWithRepo) {
-        if (modpack.repoUrl) {
-          try {
-            const response = await fetch(`https://api.github.com/repos/${modpack.repoUrl}/releases`);
-            if (!response.ok) {
-              throw new Error(`GitHub API error: ${response.status}`);
-            }
-            const releases = await response.json();
-            const totalDownloads = releases.reduce((acc: number, release: any) => {
-              return acc + release.assets.reduce((assetAcc: number, asset: any) => assetAcc + asset.download_count, 0);
-            }, 0);
-            counts[modpack.id] = totalDownloads;
-          } catch (error) {
-            console.error(`Failed to fetch downloads for ${modpack.repoUrl}:`, error);
-            counts[modpack.id] = 'error';
-          }
+      // Fetch all counts in parallel
+      const promises = packsWithRepo.map(async (modpack) => {
+        if (!modpack.repoUrl) {
+          return { id: modpack.id, count: 'error' as const };
         }
-      }
-      setDownloadCounts(c => ({...c, ...counts}));
+        try {
+          const response = await fetch(`https://api.github.com/repos/${modpack.repoUrl}/releases`);
+          if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+          }
+          // Define a basic type for what we expect from the API
+          type Asset = { download_count: number };
+          type Release = { assets: Asset[] };
+          const releases: Release[] = await response.json();
+
+          const totalDownloads = releases.reduce((acc: number, release) => {
+            const releaseDownloads = release.assets.reduce((assetAcc: number, asset) => assetAcc + (asset.download_count || 0), 0);
+            return acc + releaseDownloads;
+          }, 0);
+
+          return { id: modpack.id, count: totalDownloads };
+        } catch (error) {
+          console.error(`Failed to fetch downloads for ${modpack.repoUrl}:`, error);
+          return { id: modpack.id, count: 'error' as const };
+        }
+      });
+
+      const results = await Promise.all(promises);
+
+      const newCounts: DownloadCounts = {};
+      results.forEach(result => {
+        if (result) {
+          newCounts[result.id] = result.count;
+        }
+      });
+      
+      setDownloadCounts(prevCounts => ({...prevCounts, ...newCounts}));
+      
       try {
-        localStorage.setItem(cacheKey, JSON.stringify({ counts, timestamp: now }));
+        // Overwrite cache with the new, full set of counts
+        localStorage.setItem(cacheKey, JSON.stringify({ counts: newCounts, timestamp: new Date().getTime() }));
       } catch (e) {
         console.error("Failed to set cache", e);
       }
@@ -161,8 +185,8 @@ const App: React.FC = () => {
   const getSortButtonText = () => {
     let sortText;
     switch (sortType) {
-      case 'name-asc': sortText = 'A-Z'; break;
-      case 'name-desc': sortText = 'Z-A'; break;
+      case 'name-asc': sortText = 'А-Я'; break;
+      case 'name-desc': sortText = 'Я-А'; break;
       default: sortText = 'Новые';
     }
     const versionText = versionFilter === 'all' ? 'Все' : versionFilter;
