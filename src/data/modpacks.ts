@@ -20,7 +20,6 @@ export const modpacks: Modpack[] = [
     repoUrl: "CurseMen/ATM9",
     version: "1.0.8+",
     lastUpdated: "2025-06-11",
-    isOutdated: true,
     curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9",
     minecraftVersion: "1.20.1",
   },
