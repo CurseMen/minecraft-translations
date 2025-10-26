@@ -69,14 +69,19 @@ const App: React.FC = () => {
           const now = new Date().getTime();
           if (now - cachedData.timestamp < cacheDuration) {
             setDownloadCounts(cachedData.counts);
-            return;
+            // Check if any modpacks with repoUrl are missing from the cache
+            const packsWithRepo = modpacks.filter(p => p.repoUrl);
+            const isMissingFromCache = packsWithRepo.some(p => cachedData.counts[p.id] === undefined);
+            if (!isMissingFromCache) {
+              return; // Cache is fresh and complete, no need to fetch.
+            }
           }
         }
       } catch (e) {
         console.error("Failed to parse cache", e);
       }
       
-      const packsWithRepo = modpacks.filter(p => p.repoUrl && p.id);
+      const packsWithRepo = modpacks.filter(p => p.repoUrl);
       if (packsWithRepo.length === 0) {
         return;
       }
@@ -88,24 +93,22 @@ const App: React.FC = () => {
       });
       setDownloadCounts(prevCounts => ({...prevCounts, ...loadingCounts}));
 
-      // Fetch all counts in parallel
+      // Fetch all counts in parallel for performance
       const promises = packsWithRepo.map(async (modpack) => {
         if (!modpack.repoUrl) {
-          return { id: modpack.id, count: 'error' as const };
+          return null;
         }
         try {
           const response = await fetch(`https://api.github.com/repos/${modpack.repoUrl}/releases`);
           if (!response.ok) {
             throw new Error(`GitHub API error: ${response.status}`);
           }
-          // Define a basic type for what we expect from the API
           type Asset = { download_count: number };
           type Release = { assets: Asset[] };
           const releases: Release[] = await response.json();
 
           const totalDownloads = releases.reduce((acc: number, release) => {
-            const releaseDownloads = release.assets.reduce((assetAcc: number, asset) => assetAcc + (asset.download_count || 0), 0);
-            return acc + releaseDownloads;
+            return acc + release.assets.reduce((assetAcc: number, asset) => assetAcc + (asset.download_count || 0), 0);
           }, 0);
 
           return { id: modpack.id, count: totalDownloads };
@@ -124,10 +127,10 @@ const App: React.FC = () => {
         }
       });
       
-      setDownloadCounts(prevCounts => ({...prevCounts, ...newCounts}));
+      // Replace with the full, fresh set of counts
+      setDownloadCounts(newCounts);
       
       try {
-        // Overwrite cache with the new, full set of counts
         localStorage.setItem(cacheKey, JSON.stringify({ counts: newCounts, timestamp: new Date().getTime() }));
       } catch (e) {
         console.error("Failed to set cache", e);
@@ -197,7 +200,7 @@ const App: React.FC = () => {
     <div className="flex min-h-screen justify-center">
       {/* Left decorative sidebar */}
       <aside className="w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
-          <img src={CREEPER_IMG} alt="Creeper" className="w-auto h-auto" />
+          <img src={ZOMBIE_IMG} alt="Zombie" className="w-24 h-auto" />
       </aside>
 
       {/* Main content area */}
