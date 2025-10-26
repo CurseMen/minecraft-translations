@@ -53,7 +53,11 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
             alt={modpack.title}
             className="w-full h-40 object-cover border-4 border-stone-900" 
           />
-          {isRecentlyUpdated() && (
+          {modpack.isOutdated ? (
+            <div className="outdated-badge absolute top-2 left-2 text-xs px-2 py-1 rounded">
+              Неактуален
+            </div>
+          ) : isRecentlyUpdated() && (
             <div className="update-badge absolute top-2 left-2 text-white text-xs px-2 py-1 rounded">
               Обновлено!
             </div>
