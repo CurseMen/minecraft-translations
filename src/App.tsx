@@ -200,7 +200,7 @@ const App: React.FC = () => {
     <div className="flex min-h-screen justify-center">
       {/* Left decorative sidebar */}
       <aside className="w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
-          <img src={ZOMBIE_IMG} alt="Zombie" className="w-24 h-auto" />
+          <img src={GOLEM_IMG} alt="Zombie" className="w-auto h-auto" />
       </aside>
 
       {/* Main content area */}
