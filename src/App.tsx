@@ -12,11 +12,10 @@ interface DownloadCounts {
 }
 
 // Paths to images in the assets folder
-const CREEPER_IMG = '/assets/Creeper.png';
+const CREEPER_IMG = '/assets/creeper.png';
 const ZOMBIE_IMG = '/assets/zombie.png';
 const SKELETON_IMG = '/assets/skeleton.png';
-const ENDERMAN_IMG = '/assets/Enderman.png';
-const GOLEM_IMG = '/assets/golem.png';
+const ENDERMAN_IMG = '/assets/enderman.png';
 
 type SortType = 'newest' | 'name-asc' | 'name-desc';
 
@@ -197,88 +196,92 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen justify-center">
+    <div className="flex min-h-screen">
       {/* Left decorative sidebar */}
-      <aside className="w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
-          <img src={CREEPER_IMG} alt="Creeper" className="w-auto h-auto" />
+      <aside className="flex-none w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
+          <img src={CREEPER_IMG} alt="Creeper" className="w-24 h-auto" />
+          <img src={ZOMBIE_IMG} alt="Zombie" className="w-24 h-auto" />
       </aside>
 
-      {/* Main content area */}
-      <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 w-full xl:w-2/3 max-w-7xl main-content-bg">
-        <Header onNewsClick={() => setIsNewsModalOpen(true)} />
-        
-        {isNewsModalOpen && <NewsModal onClose={() => setIsNewsModalOpen(false)} />}
+      {/* Main content area wrapper */}
+      <div className="flex-1 flex justify-center min-w-0 main-content-bg">
+        {/* Actual content container */}
+        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8">
+          <Header onNewsClick={() => setIsNewsModalOpen(true)} />
+          
+          {isNewsModalOpen && <NewsModal onClose={() => setIsNewsModalOpen(false)} />}
 
-        <main className="w-full flex-grow">
-          {selectedModpack ? (
-            <ModpackDetail
-              modpack={selectedModpack}
-              downloadCount={downloadCounts[selectedModpack.id]}
-            />
-          ) : (
-            <>
-              <div className="mb-8 w-full max-w-2xl mx-auto flex gap-2 items-stretch">
-                <input
-                  type="text"
-                  placeholder="Поиск по названию..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="minecraft-search w-full p-4 text-lg flex-grow"
-                  aria-label="Поиск по названию модпака"
-                />
-                <div className="relative" ref={sortDropdownRef}>
-                  <button 
-                    onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)} 
-                    className="minecraft-btn px-4 py-2 text-xs h-full flex items-center gap-3"
-                    aria-haspopup="true"
-                    aria-expanded={isSortDropdownOpen}
-                  >
-                    <span>{getSortButtonText()}</span>
-                    <span className={`arrow ${isSortDropdownOpen ? 'open' : ''}`} style={{ transform: isSortDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>&#9660;</span>
-                  </button>
-                  {isSortDropdownOpen && (
-                    <div className="minecraft-dropdown-menu">
-                      <div className="minecraft-dropdown-inner">
-                        <div className="minecraft-dropdown-header">Сортировать по</div>
-                        <button onClick={() => {setSortType('newest'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'newest' ? 'active' : ''}`}>Сначала новые</button>
-                        <button onClick={() => {setSortType('name-asc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-asc' ? 'active' : ''}`}>Название (А-Я)</button>
-                        <button onClick={() => {setSortType('name-desc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-desc' ? 'active' : ''}`}>Название (Я-А)</button>
-                        <div className="minecraft-dropdown-divider"></div>
-                        <div className="minecraft-dropdown-header">Фильтр по версии MC</div>
-                        <button onClick={() => {setVersionFilter('all'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${versionFilter === 'all' ? 'active' : ''}`}>Все версии</button>
-                        {uniqueVersions.map(version => (
-                           <button key={version} onClick={() => {setVersionFilter(version); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${versionFilter === version ? 'active' : ''}`}>{version}</button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredAndSortedModpacks.map((modpack) => (
-                  <ModpackCard 
-                    key={modpack.id} 
-                    modpack={modpack} 
-                    downloadCount={downloadCounts[modpack.id]}
+          <main className="w-full flex-grow">
+            {selectedModpack ? (
+              <ModpackDetail
+                modpack={selectedModpack}
+                downloadCount={downloadCounts[selectedModpack.id]}
+              />
+            ) : (
+              <>
+                <div className="mb-8 w-full max-w-2xl mx-auto flex gap-2 items-stretch">
+                  <input
+                    type="text"
+                    placeholder="Поиск по названию..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="minecraft-search w-full p-4 text-lg flex-grow"
+                    aria-label="Поиск по названию модпака"
                   />
-                ))}
-              </div>
-              {filteredAndSortedModpacks.length === 0 && (
-                  <div className="minecraft-card-inner text-center p-8 col-span-full">
-                      <p className="text-xl text-black">Ничего не найдено!</p>
+                  <div className="relative" ref={sortDropdownRef}>
+                    <button 
+                      onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)} 
+                      className="minecraft-btn px-4 py-2 text-xs h-full flex items-center gap-3"
+                      aria-haspopup="true"
+                      aria-expanded={isSortDropdownOpen}
+                    >
+                      <span>{getSortButtonText()}</span>
+                      <span className={`arrow ${isSortDropdownOpen ? 'open' : ''}`} style={{ transform: isSortDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>&#9660;</span>
+                    </button>
+                    {isSortDropdownOpen && (
+                      <div className="minecraft-dropdown-menu">
+                        <div className="minecraft-dropdown-inner">
+                          <div className="minecraft-dropdown-header">Сортировать по</div>
+                          <button onClick={() => {setSortType('newest'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'newest' ? 'active' : ''}`}>Сначала новые</button>
+                          <button onClick={() => {setSortType('name-asc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-asc' ? 'active' : ''}`}>Название (А-Я)</button>
+                          <button onClick={() => {setSortType('name-desc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-desc' ? 'active' : ''}`}>Название (Я-А)</button>
+                          <div className="minecraft-dropdown-divider"></div>
+                          <div className="minecraft-dropdown-header">Фильтр по версии MC</div>
+                          <button onClick={() => {setVersionFilter('all'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${versionFilter === 'all' ? 'active' : ''}`}>Все версии</button>
+                          {uniqueVersions.map(version => (
+                             <button key={version} onClick={() => {setVersionFilter(version); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${versionFilter === version ? 'active' : ''}`}>{version}</button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-              )}
-            </>
-          )}
-        </main>
-        <Footer />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredAndSortedModpacks.map((modpack) => (
+                    <ModpackCard 
+                      key={modpack.id} 
+                      modpack={modpack} 
+                      downloadCount={downloadCounts[modpack.id]}
+                    />
+                  ))}
+                </div>
+                {filteredAndSortedModpacks.length === 0 && (
+                    <div className="minecraft-card-inner text-center p-8 col-span-full">
+                        <p className="text-xl text-black">Ничего не найдено!</p>
+                    </div>
+                )}
+              </>
+            )}
+          </main>
+          <Footer />
+        </div>
       </div>
 
        {/* Right decorative sidebar */}
-      <aside className="w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
-          <img src={GOLEM_IMG} alt="Golem" className="w-auto h-auto" />
-          <img src={ENDERMAN_IMG} alt="Enderman" className="w-auto h-auto" />
+      <aside className="flex-none w-1/6 hidden xl:flex flex-col items-center justify-center space-y-16 p-8 opacity-50">
+          <img src={SKELETON_IMG} alt="Skeleton" className="w-24 h-auto" />
+          <img src={ENDERMAN_IMG} alt="Enderman" className="w-24 h-auto" />
       </aside>
     </div>
   );
