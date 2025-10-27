@@ -12,11 +12,11 @@ interface DownloadCounts {
 }
 
 // Paths to images in the assets folder
-const CREEPER_IMG = 'assets/Creeper.png';
-const ZOMBIE_IMG = 'assets/zombie.png';
-const SKELETON_IMG = 'assets/skeleton.png';
-const ENDERMAN_IMG = 'assets/Enderman.png';
-const GOLEM_IMG = 'assets/golem.png';
+const CREEPER_IMG = '/assets/creeper.png';
+const ZOMBIE_IMG = '/assets/zombie.png';
+const SKELETON_IMG = '/assets/skeleton.png';
+const ENDERMAN_IMG = '/assets/enderman.png';
+const GOLEM_IMG = '/assets/golem.png';
 
 type SortType = 'newest' | 'name-asc' | 'name-desc';
 
@@ -188,8 +188,8 @@ const App: React.FC = () => {
   const getSortButtonText = () => {
     let sortText;
     switch (sortType) {
-      case 'name-asc': sortText = 'A-Z'; break;
-      case 'name-desc': sortText = 'Z-A'; break;
+      case 'name-asc': sortText = 'А-Я'; break;
+      case 'name-desc': sortText = 'Я-А'; break;
       default: sortText = 'Новые';
     }
     const versionText = versionFilter === 'all' ? 'Все' : versionFilter;
@@ -204,7 +204,7 @@ const App: React.FC = () => {
       </aside>
 
       {/* Main content area */}
-      <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 w-full max-w-7xl flex-grow main-content-bg">
+      <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 max-w-7xl flex-grow main-content-bg">
         <Header onNewsClick={() => setIsNewsModalOpen(true)} />
         
         {isNewsModalOpen && <NewsModal onClose={() => setIsNewsModalOpen(false)} />}
@@ -241,8 +241,8 @@ const App: React.FC = () => {
                       <div className="minecraft-dropdown-inner">
                         <div className="minecraft-dropdown-header">Сортировать по</div>
                         <button onClick={() => {setSortType('newest'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'newest' ? 'active' : ''}`}>Сначала новые</button>
-                        <button onClick={() => {setSortType('name-asc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-asc' ? 'active' : ''}`}>Название (A-Z)</button>
-                        <button onClick={() => {setSortType('name-desc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-desc' ? 'active' : ''}`}>Название (Z-A)</button>
+                        <button onClick={() => {setSortType('name-asc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-asc' ? 'active' : ''}`}>Название (А-Я)</button>
+                        <button onClick={() => {setSortType('name-desc'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${sortType === 'name-desc' ? 'active' : ''}`}>Название (Я-А)</button>
                         <div className="minecraft-dropdown-divider"></div>
                         <div className="minecraft-dropdown-header">Фильтр по версии MC</div>
                         <button onClick={() => {setVersionFilter('all'); setIsSortDropdownOpen(false);}} className={`minecraft-dropdown-item ${versionFilter === 'all' ? 'active' : ''}`}>Все версии</button>
