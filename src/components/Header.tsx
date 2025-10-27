@@ -10,6 +10,7 @@ const Header: React.FC<HeaderProps> = ({ onNewsClick }) => {
     <header className="w-full max-w-7xl text-center py-6 md:py-8 mb-6 flex flex-wrap justify-between items-center gap-y-4">
       <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
         <a href="#" className="text-3xl sm:text-4xl md:text-5xl text-white text-shadow-dark uppercase tracking-wider flex items-center gap-2 sm:gap-4" style={{ textDecoration: 'none' }}>
+          <img src="/assets/creeper.png" alt="Creeper logo" className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" />
           <svg className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M4 6 L2 6 L2 12 L4 12 L4 10 L8 10 L8 12 L10 12 L10 6 L8 6 L8 4 L4 4 L4 6 Z M8 4 L12 4 L12 0 L8 0 L8 4 Z M0 4 L4 4 L4 0 L0 0 L0 4 Z" />
           </svg>
