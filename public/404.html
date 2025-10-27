@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Not Found - Redirecting...</title>
+    <script>
+      (function(){
+        // For a single-page app (SPA) on a custom domain, we redirect any
+        // 404 path back to the root, preserving the hash for the client-side router.
+        window.location.replace('/' + window.location.hash);
+      }());
+    </script>
+  </head>
+  <body>
+    <p>If you are not redirected automatically, please <a href="/">click here</a>.</p>
+  </body>
+</html>
