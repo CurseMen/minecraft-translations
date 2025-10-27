@@ -12,10 +12,10 @@ interface DownloadCounts {
 }
 
 // Paths to images in the assets folder
-const CREEPER_IMG = '/assets/creeper.png';
+const CREEPER_IMG = '/assets/Creeper.png';
 const ZOMBIE_IMG = '/assets/zombie.png';
 const SKELETON_IMG = '/assets/skeleton.png';
-const ENDERMAN_IMG = '/assets/enderman.png';
+const ENDERMAN_IMG = '/assets/Enderman.png';
 const GOLEM_IMG = '/assets/golem.png';
 
 type SortType = 'newest' | 'name-asc' | 'name-desc';
@@ -204,7 +204,7 @@ const App: React.FC = () => {
       </aside>
 
       {/* Main content area */}
-      <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 max-w-7xl flex-grow main-content-bg">
+      <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 w-full xl:w-2/3 max-w-7xl main-content-bg">
         <Header onNewsClick={() => setIsNewsModalOpen(true)} />
         
         {isNewsModalOpen && <NewsModal onClose={() => setIsNewsModalOpen(false)} />}
