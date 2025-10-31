@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 3,
+    date: "31.10.2025",
+    content: "Добавлен перевод квестов новой сборки Society: Sunlit Valley, а также перевод множества модов!",
+  },
+  {
     id: 2,
     date: "30.10.2025",
     content: "Исправлено отображение основных изображений в квестах в сборке FTB Skies 2 для версии 1.9.2. ",
