@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 4,
+    date: "15.11.2025",
+    content: "Обновлён перевод квестов сборки SteamPunk [LPS] для версии v18."
+  },
+  {
     id: 3,
     date: "31.10.2025",
     content: "Добавлен перевод квестов новой сборки Society: Sunlit Valley, а также перевод множества модов!",
