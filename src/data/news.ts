@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 6,
+    date: "08.12.2025",
+    content: "Обновлён перевод квестов сборки All The Mods 10 для версии 5.3.1"
+  },
+  {
     id: 5,
     date: "26.11.2025",
     content: "Обновлён перевод квестов сборки MC Eternal 2 для версии 1.2.0.2"
