@@ -49,7 +49,10 @@ const ModpackDetail: React.FC<ModpackDetailProps> = ({ modpack, downloadCount })
     if (typeof downloadCount === 'number') return downloadCount.toLocaleString('ru-RU');
     return null;
   };
-
+  const formattedDate = modpack.lastUpdated 
+    ? modpack.lastUpdated.split('-').reverse().join('.')
+    : null;
+	
   return (
     <div className="minecraft-detail-view p-4 md:p-6 lg:p-8">
       <button onClick={handleBackClick} className="minecraft-btn mb-6 text-sm py-2 px-4">
@@ -80,6 +83,8 @@ const ModpackDetail: React.FC<ModpackDetailProps> = ({ modpack, downloadCount })
             Версия: {modpack.version}
             <span className="mx-2 text-stone-400">|</span>
             Minecraft: {modpack.minecraftVersion}
+			<span className="mx-2 text-stone-400">|</span>
+			Обновлено: {formattedDate}
           </p>
           
           <div className="flex flex-wrap items-center gap-4 mb-6">
