@@ -82,7 +82,7 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
             MC: {modpack.minecraftVersion}
           </p>
           {formattedDate && (
-            <p className="text-stone-500 text-xs mt-1">
+            <p className="text-stone-600 text-sm">
               Обновлено: {formattedDate}
             </p>
           )}
