@@ -77,7 +77,6 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
           Версия: {modpack.version}
           <span className="mx-2 text-stone-400">|</span>
           MC: {modpack.minecraftVersion}
-          <br>Последнее обновление перевода: {modpack.lastUpdated}</br>
         </p>
         <p className="text-stone-800 text-base flex-grow mb-6">
           {modpack.description}
