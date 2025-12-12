@@ -43,7 +43,9 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
     
     return diffDays >= 0 && diffDays <= 7;
   };
-
+  const formattedDate = modpack.lastUpdated 
+    ? modpack.lastUpdated.split('-').reverse().join('.')
+    : null;
   return (
     <div className="minecraft-card p-2 flex flex-col" onClick={handleCardClick}>
       <div className="minecraft-card-inner p-4 flex flex-col h-full">
