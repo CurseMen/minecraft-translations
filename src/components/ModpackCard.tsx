@@ -73,11 +73,18 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
         <h2 className="text-2xl mt-4 uppercase text-black" style={{ textShadow: '2px 2px 0 #ffffff90' }}>
           {modpack.title}
         </h2>
-        <p className="text-stone-600 text-sm mt-1 mb-4">
-          Версия: {modpack.version}
-          <span className="mx-2 text-stone-400">|</span>
-          MC: {modpack.minecraftVersion}
-        </p>
+        <div className="mt-1 mb-4">
+          <p className="text-stone-600 text-sm">
+            Версия: {modpack.version}
+            <span className="mx-2 text-stone-400">|</span>
+            MC: {modpack.minecraftVersion}
+          </p>
+          {formattedDate && (
+            <p className="text-stone-500 text-xs mt-1">
+              Обновлено: {formattedDate}
+            </p>
+          )}
+        </div>
         <p className="text-stone-800 text-base flex-grow mb-6">
           {modpack.description}
         </p>
