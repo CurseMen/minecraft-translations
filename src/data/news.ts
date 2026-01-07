@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 8,
+    date: "07.01.2025",
+    content: "Добавлен перевод квестов новой сборки Abyssal Ascent, а также перевод множества модов!"
+  },
+  {
     id: 7,
     date: "11.12.2025",
     content: "Обновлён перевод квестов сборки Society: Sunlit Valley для версии 3.4.3"
