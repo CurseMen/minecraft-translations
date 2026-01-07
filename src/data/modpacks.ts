@@ -272,5 +272,18 @@ export const modpacks: Modpack[] = [
       "Whimsy Deco"
     ],
     curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/society-sunlit-valley",
+  },
+  {
+    id: 10,
+    title: "Abyssal Ascent",
+    description: "Уникальное вертикальное выживание, где вам предстоит начать путь на самом дне Бездны и пробиваться сквозь наслоенные друг на друга измерения вверх, к заветной поверхности.",
+    detailedDescription: "В <strong>Abyssal Ascent</strong> привычные правила исследования мира не работают: вы оказываетесь заперты на самом дне, а единственный путь к спасению лежит строго вверх. Сборка построена на концепции вертикальной прогрессии, где различные измерения расположены слоями, словно этажи гигантской башни, и каждый новый уровень встречает вас уникальными биомами, опасными монстрами и новыми ресурсами. Следуя системе квестов, вам предстоит развиваться, выживать в суровых условиях и буквально прорубать потолок каждого мира, чтобы шаг за шагом подниматься из мрачной тьмы к солнечному свету.",
+    imageUrl: "assets/abyssal_ascent.jpg",
+    downloadUrl: "https://github.com/CurseMen/Abyssal-Ascent/releases/download/0.2.2.2/Abyssal.Ascent.0.2.2.2.zip",
+    repoUrl: "CurseMen/Abyssal-Ascent",
+    version: "0.2.2.2+",
+    lastUpdated: "2026-01-07",
+    curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/abyssal-ascent",
+    minecraftVersion: "1.20.1",
   }
 ];
