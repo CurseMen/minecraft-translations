@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modpack } from '../types';
 
 interface ModpackCardProps {
@@ -13,6 +13,12 @@ const DownloadIcon = () => (
 );
 
 const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => {
+  const [imgSrc, setImgSrc] = useState(modpack.imageUrl);
+
+  useEffect(() => {
+    setImgSrc(modpack.imageUrl);
+  }, [modpack.imageUrl]);
+
   const renderCount = () => {
     if (downloadCount === 'loading') return '...';
     if (downloadCount === 'error') return 'Ошибка';
@@ -43,17 +49,20 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
     
     return diffDays >= 0 && diffDays <= 7;
   };
+
   const formattedDate = modpack.lastUpdated 
     ? modpack.lastUpdated.split('-').reverse().join('.')
     : null;
+
   return (
     <div className="minecraft-card p-2 flex flex-col" onClick={handleCardClick}>
       <div className="minecraft-card-inner p-4 flex flex-col h-full">
         <div className="relative">
           <img 
-            src={modpack.imageUrl} 
+            src={imgSrc} 
             alt={modpack.title}
-            className="w-full h-40 object-cover border-4 border-stone-900" 
+            className="w-full h-40 object-cover border-4 border-stone-900"
+            onError={() => setImgSrc('/assets/creeper_logo.png')}
           />
           {modpack.isOutdated ? (
             <div className="outdated-badge absolute top-2 left-2 text-xs px-2 py-1 rounded">
@@ -82,7 +91,7 @@ const ModpackCard: React.FC<ModpackCardProps> = ({ modpack, downloadCount }) => 
             MC: {modpack.minecraftVersion}
           </p>
           {formattedDate && (
-            <p className="text-stone-600 text-sm">
+            <p className="text-stone-500 text-xs mt-1">
               Обновлено: {formattedDate}
             </p>
           )}
