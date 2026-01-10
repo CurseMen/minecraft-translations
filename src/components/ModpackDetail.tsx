@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modpack } from '../types';
 import CollapsibleList from './CollapsibleList';
 
@@ -27,13 +27,20 @@ const ModrinthIcon = () => (
 
 const installationSteps = [
   '<strong>Шаг 1:</strong> Скачайте архив с переводом по кнопке "Скачать".',
-  '<strong>Шаг 2:</strong> Откройте папку вашей сборки. Обычно это можно сделать через лаунчер (в CurseForge это правый клик по сборке -> "Open Folder").',
-  '<strong>Шаг 3:</strong> Распакуйте содержимое архива в папку сборки, подтверждая замену файлов, если потребуется.',
-  '<strong>Шаг 4:</strong> Запустите игру. Перевод должен примениться автоматически. Если к переводу прилагается ресурспак с переводом модов, нужно активировать его в настройках игры.',
+  '<strong>Шаг 2:</strong> Откройте папку вашей сборки. Обычно это можно сделать через лаунчер (в CurseForge это правый клик по сборке -> "Открыть папку").',
+  '<strong>Шаг 3:</strong> Найдите в папке сборки директории, которые есть в архиве (чаще всего это папки <strong>kubejs</strong>, <strong>config</strong> или <strong>patchouli_books</strong>).',
+  '<strong>Шаг 4:</strong> Распакуйте содержимое архива в папку сборки, подтверждая замену файлов, если потребуется.',
+  '<strong>Шаг 5:</strong> Запустите игру. Перевод должен примениться автоматически.',
 ];
 
 
 const ModpackDetail: React.FC<ModpackDetailProps> = ({ modpack, downloadCount }) => {
+  const [imgSrc, setImgSrc] = useState(modpack.imageUrl);
+
+  useEffect(() => {
+    setImgSrc(modpack.imageUrl);
+  }, [modpack.imageUrl]);
+
   const handleBackClick = () => {
     window.location.hash = '';
   };
@@ -49,10 +56,7 @@ const ModpackDetail: React.FC<ModpackDetailProps> = ({ modpack, downloadCount })
     if (typeof downloadCount === 'number') return downloadCount.toLocaleString('ru-RU');
     return null;
   };
-  const formattedDate = modpack.lastUpdated 
-    ? modpack.lastUpdated.split('-').reverse().join('.')
-    : null;
-	
+
   return (
     <div className="minecraft-detail-view p-4 md:p-6 lg:p-8">
       <button onClick={handleBackClick} className="minecraft-btn mb-6 text-sm py-2 px-4">
@@ -62,9 +66,10 @@ const ModpackDetail: React.FC<ModpackDetailProps> = ({ modpack, downloadCount })
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-1">
           <img 
-            src={modpack.imageUrl} 
+            src={imgSrc} 
             alt={modpack.title}
             className="w-full h-auto object-cover border-4 border-stone-900 mb-4" 
+            onError={() => setImgSrc('/assets/creeper_logo.png')}
           />
         </div>
 
@@ -83,8 +88,6 @@ const ModpackDetail: React.FC<ModpackDetailProps> = ({ modpack, downloadCount })
             Версия: {modpack.version}
             <span className="mx-2 text-stone-400">|</span>
             Minecraft: {modpack.minecraftVersion}
-			<span className="mx-2 text-stone-400">|</span>
-			Обновлено: {formattedDate}
           </p>
           
           <div className="flex flex-wrap items-center gap-4 mb-6">
