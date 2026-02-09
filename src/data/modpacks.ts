@@ -393,6 +393,7 @@ export const modpacks: Modpack[] = [
     version: "1.2.9.4+",
     lastUpdated: "2026-02-09",
     curseforgeUrl: "https://www.curseforge.com/minecraft/modpacks/homestead-cozy",
+    modrinthUrl: "https://modrinth.com/modpack/homestead",
     minecraftVersion: "1.20.1",
     localizedMods: [
       "Amendments",
