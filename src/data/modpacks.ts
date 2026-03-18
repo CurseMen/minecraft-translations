@@ -572,7 +572,7 @@ export const modpacks: Modpack[] = [
     title: "Create Chronicles: The Endventure",
     description: "Сюжетно-ориентированная сборка на базе механик мода Create, где масштабная автоматизация производства и инженерное дело переплетаются с большим приключением на пути к финалу игры.",
     detailedDescription: "В <strong>Create Chronicles: The Endventure</strong> привычное выживание отходит на второй план, уступая место грандиозному инженерному путешествию. Основой прогрессии здесь выступает кинетическая энергия и конструирование сложных фабрик с помощью мода Create, вокруг которого выстроена строгая система измененных крафтов и сюжетных глав. Вам предстоит не просто добывать ресурсы, а проектировать хитроумные механизмы, автоматизировать процессы, прокладывать железнодорожные сети и исследовать мир, чтобы шаг за шагом разгадать тайны этого мира и добраться до измерения Энд.",
-    imageUrl: "assets/endventure.jpg",
+    imageUrl: "assets/endventure.png",
     downloadUrl: "https://github.com/CurseMen/Create-Endventure/releases/download/1.5.3/Create.Chronicles.The.Endventure.1.5.3.zip",
     repoUrl: "CurseMen/Create-Endventure",
     version: "1.5.3+",
