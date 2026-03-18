@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 9,
+    date: "18.03.2025",
+    content: "Добавлен перевод квестов новой сборки Create Chronicles: The Endventure, а также перевод множества модов!"
+  },
+  {
     id: 8,
     date: "07.01.2025",
     content: "Добавлен перевод квестов новой сборки Abyssal Ascent, а также перевод множества модов!"
