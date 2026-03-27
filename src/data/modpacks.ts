@@ -168,10 +168,10 @@ export const modpacks: Modpack[] = [
     description: "Society: Sunlit Valley — это тёплая и уютная сборка о создании собственного мирка и жизни в гармонии с природой.",
     detailedDescription: "<strong>Society: Sunlit Valley</strong> — уютная сборка с элементами RPG, экономики и строительства, где игроку предстоит развивать собственное поселение, взаимодействовать с жителями и создавать процветающее общество. Сборка сочетает медитативное выживание, крафт и атмосферу спокойствия в солнечной долине.",
     imageUrl: "assets/society.png",
-    downloadUrl: "https://github.com/CurseMen/Society-Sunlit-Valley/releases/download/3.4.3/Society.Sunlit.Valley.3.4.3.zip",
+    downloadUrl: "https://github.com/CurseMen/Society-Sunlit-Valley/releases/download/4.0.4/Society.Sunlit.Valley.4.0.4.zip",
     repoUrl: "CurseMen/Society-Sunlit-Valley",
-    version: "3.4.3+",
-    lastUpdated: "2025-12-11",
+    version: "4.0.4+",
+    lastUpdated: "2026-03-27",
     minecraftVersion: "1.20.1",
     localizedMods: [
       "Armor Statues",
