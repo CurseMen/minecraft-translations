@@ -2,13 +2,18 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 10,
+    date: "27.03.2026",
+    content: "Обновлён перевод квестов сборки Society: Sunlit Valley для версии 3.4.3"
+  },
+  {
     id: 9,
-    date: "18.03.2025",
+    date: "18.03.2026",
     content: "Добавлен перевод квестов новой сборки Create Chronicles: The Endventure, а также перевод множества модов!"
   },
   {
     id: 8,
-    date: "07.01.2025",
+    date: "07.01.2026",
     content: "Добавлен перевод квестов новой сборки Abyssal Ascent, а также перевод множества модов!"
   },
   {
