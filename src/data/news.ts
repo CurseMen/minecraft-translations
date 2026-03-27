@@ -4,7 +4,7 @@ export const news: NewsItem[] = [
   {
     id: 10,
     date: "27.03.2026",
-    content: "Обновлён перевод квестов сборки Society: Sunlit Valley для версии 3.4.3"
+    content: "Обновлён перевод квестов сборки Society: Sunlit Valley для версии 4.0.4"
   },
   {
     id: 9,
