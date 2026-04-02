@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 11,
+    date: "02.04.2026",
+    content: "Обновлён перевод квестов сборки FTB OceanBlock 2 для версии 1.16.0"
+  },
+  {
     id: 10,
     date: "27.03.2026",
     content: "Обновлён перевод квестов сборки Society: Sunlit Valley для версии 4.0.4"
