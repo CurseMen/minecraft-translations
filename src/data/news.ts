@@ -2,6 +2,11 @@ import { NewsItem } from '../types';
 
 export const news: NewsItem[] = [
   {
+    id: 12,
+    date: "06.04.2026",
+    content: "Обновлён перевод квестов сборки Cisco's Fantasy Medieval RPG [Dragonfyre] для версии 1.16.0"
+  },
+  {
     id: 11,
     date: "02.04.2026",
     content: "Обновлён перевод квестов сборки FTB OceanBlock 2 для версии 1.16.0"
